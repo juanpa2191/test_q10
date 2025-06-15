@@ -52,3 +52,8 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+/.vs/EstudiantesApp/config
+/.vs/EstudiantesApp/CopilotIndices/17.14.719.50355
+/.vs/EstudiantesApp/FileContentIndex
+/.vs/EstudiantesApp/v17
+/.vs
