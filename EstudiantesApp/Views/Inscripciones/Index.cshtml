@@ -1,0 +1,36 @@
+﻿@model List<EstudiantesApp.Application.DTOs.InscripcionDto>
+@{
+    ViewData["Title"] = "Inscripciones";
+    Layout = "_Layout";
+    var estudianteId = ViewBag.EstudianteId;
+}
+
+<h2>Materias inscritas</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Create" asp-route-estudianteId="@estudianteId">Inscribir Materia</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Materia</th>
+            <th>Créditos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ins in Model)
+        {
+            <tr>
+                <td>@ins.MateriaNombre</td>
+                <td>@ins.Creditos</td>
+                <td>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="estudianteId" value="@ins.EstudianteId" />
+                        <input type="hidden" name="materiaId" value="@ins.MateriaId" />
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Inscribir Materia";
+    Layout = "_Layout";
+    var estudianteId = ViewBag.EstudianteId;
+    var materias = ViewBag.Materias as List<EstudiantesApp.Application.DTOs.MateriaDto>;
+}
+
+<h2>Inscribir materia</h2>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" name="estudianteId" value="@estudianteId" />
+
+    <div class="mb-3">
+        <label class="form-label">Materia</label>
+        <select name="materiaId" class="form-select">
+            @foreach (var mat in materias)
+            {
+                <option value="@mat.Id">@mat.Nombre (@mat.Creditos créditos)</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Inscribir</button>
+    <a asp-action="Index" asp-route-estudianteId="@estudianteId" class="btn btn-secondary">Volver</a>
+</form>

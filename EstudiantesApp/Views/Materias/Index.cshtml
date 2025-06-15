@@ -1,0 +1,34 @@
+﻿@model List<EstudiantesApp.Application.DTOs.MateriaDto>
+@{
+    ViewData["Title"] = "Materias";
+    Layout = "_Layout";
+}
+
+<h2>Listado de Materias</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Nueva Materia</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Código</th>
+            <th>Créditos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mat in Model)
+        {
+            <tr>
+                <td>@mat.Nombre</td>
+                <td>@mat.Codigo</td>
+                <td>@mat.Creditos</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@mat.Id">Editar</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@mat.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
