@@ -24,15 +24,6 @@ namespace EstudiantesApp.Controllers
             return View(model); 
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            var estudiante = await _repo.GetByIdAsync(id);
-            if (estudiante == null) return NotFound();
-
-            var dto = _mapper.Map<EstudianteDto>(estudiante);
-            return View(dto);
-        }
-
         public IActionResult Create()
         {
             return View(); 
